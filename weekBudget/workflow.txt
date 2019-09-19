@@ -1,0 +1,42 @@
+class
+
+class Budget {
+	constructor (budget) {
+	this.budget = Number (budget) //changes
+	this.budgetLeft = this.budget //doesnt
+
+class HTML {
+	insertBudget (amount) {
+		budgetTotal.innerHTML = `${amount}`
+		budgetLeft.innerHTML = `${amount}`
+
+variable
+
+//needed for input validation & budget calculation 
+let userBudget; //typed budget
+let budget;  //calculated budget
+
+//needed for html
+const html = new HTML ();
+const budgetTotal = document.querySelector ('span#total');
+const budgetLeft = document.querySelector ('span#left');
+
+const addExpenseForm = document.getElementById ('add-expense')
+
+event listeners
+
+eventListener ();
+function eventListener () {
+
+document.eventListener ('DOMContentLoaded',function {
+	userBudget = prompt ("Enter your weekly budget");
+	if (userBudget === null || userBudget === '' || userBudget === '0') {
+		window.location.reload ();
+	}else{
+	const budgetClass = new Budget (userBudget); //total and left turned objects
+	html.insertBudget (budgetClass.budget);
+	
+addExpenseForm.addEventListener ('submit',function (e) {
+	e.preventDefault ();
+
+		
