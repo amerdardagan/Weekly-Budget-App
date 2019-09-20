@@ -2,12 +2,12 @@
 
 class Budget {
     constructor (budget) {
-        this.budget = Number (budget); //it should be number
-        this.budgetLeft = this.budget //on start return typed budget for now
+        this.budget = Number (budget); //it should be number//its let-changes
+        this.budgetLeft = this.budget //on start return typed budget for now//its html const
     }
 }
 
-//everxthing related to html
+//everything related to html
 class HTML {
     //inserts the budget when user submits it
     insertBudget (amount) {
@@ -17,9 +17,23 @@ class HTML {
 
     }
 
+    //Prints a message (correct or invalid)
+    printMessage (message, className) {
+        const messageWrapper = document.createElement ('div');
+        messageWrapper.classList.add ('text-center', 'alert', className);//adds 3 classes in div-to show text in center, alert and content
+        messageWrapper.appendChild (document.createTextNode (message));
+
+        //insert into HTML
+        document.querySelector ('.primary').insertBefore(messageWrapper, addExpenseForm);
+
+        //Clera the error
+        setTimeout (function () {
+            document.querySelector ('.primary .alert').remove()
+        },3000) ;
+    }
+
+
 }
-
-
 
 //Variables
 
@@ -34,10 +48,6 @@ let budget,      //global variables: available in all programme//calculated one 
     userBudget;  //userBudget will be prompted on Load//typed one
 
 const html = new HTML ();
-
-
-
-
 
 
 //Event Listeners
@@ -64,8 +74,17 @@ function eventListeners () {
 
     //want to submit a form 
     addExpenseForm.addEventListener ('submit', function (e) { 
-        e.preventDefault ();  //will fake a submission to another place
+        e.preventDefault ();
+        //Read the values from the budget form (left:Name+Amount)
+        const expenseName = document.querySelector ('#expense').value; //to access it
+        const expenseAmount = document.querySelector ('#amount').value;
 
+        if (expenseName === '' || expenseAmount === '') {
+            //console.log ('Invalid!');
+            html.printMessage ('There was error, all fields are mandatory!', 'alert-danger') //class in bootstrap
+        } else {
+            console.log ('Correct!');
+        }
 
     })
 
