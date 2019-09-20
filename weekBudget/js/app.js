@@ -30,7 +30,26 @@ class HTML {
         setTimeout (function () {
             document.querySelector ('.primary .alert').remove()
         },3000) ;
+
     }
+
+        //dsiplays the expenses in the Form (left) to List (right)
+    addExpensetoList (expenseName,expenseAmount) {
+        const expensesList = document.querySelector ('#expenses ul'); //ul u html
+                //create li
+                const li = document.createElement ('li');
+                li.className = "list-group-item d-flex justify-content-between align-items-center"
+
+                //create template
+                    li.innerHTML = `
+                        ${expenseName}
+                        <span class="badge badge-primary badge-pill">€ ${expenseAmount}</span> 
+                    `
+
+                //insert to HTML
+                expensesList.appendChild (li);
+    }
+    
 
 
 }
@@ -83,7 +102,10 @@ function eventListeners () {
             //console.log ('Invalid!');
             html.printMessage ('There was error, all fields are mandatory!', 'alert-danger') //class in bootstrap
         } else {
-            console.log ('Correct!');
+            //console.log ('Correct!');
+            //Add the expenses in the List
+            html.addExpensetoList (expenseName , expenseAmount)
+
         }
 
     })
